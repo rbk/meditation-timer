@@ -12,18 +12,10 @@ import {
     Text, 
     View,
     TouchableOpacity,
-    Audio
   } from 'react-native';
+
 import Sound from 'react-native-sound';
 import BackgroundTimer from 'react-native-background-timer';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
 
 export default class App extends Component {
 
@@ -46,16 +38,16 @@ export default class App extends Component {
 
   resetTimer() {
     this.setState({
-      text: '10:00'
+      text: '10:00',
+      sessionInProgress: false
     })
-    // clearInterval(this.timer)
     BackgroundTimer.stopBackgroundTimer();
   }
 
   startTimer() {
 
     let seconds = 60*10
-    let currSeconds = seconds
+    let seconds = 60*10
 
     // https://github.com/ocetnik/react-native-background-timer
     BackgroundTimer.runBackgroundTimer(() => {
@@ -163,7 +155,5 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     textAlign: 'center'
   },
-  hide: {
-    display: 'none'
-  }
+
 });
